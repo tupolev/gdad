@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-only
+// Copyright (C) 2026 tupolev
 (()=>{
 const {t}=globalThis.GDAD_I18N;
 if(window.__draftExporter){window.__draftExporter.open();return;}

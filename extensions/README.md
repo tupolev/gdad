@@ -35,3 +35,7 @@ Firefox creates its download URL in the extension background context because Fir
 Filename handling, duplicate naming, language detection, and the Firefox download flow have automated regression checks in `tools`. These checks do not replace testing against Gmail's live interface. The user has confirmed successful Firefox downloading; full visual testing in all languages remains pending.
 
 Current version: **0.4.0** for both browsers. See [submission guidance](../release/PUBLISHING.md).
+
+## License
+
+Copyright (C) 2026 tupolev. GDAD source code, icons and documentation are licensed under the GNU General Public License version 3 only (`GPL-3.0-only`). See [LICENSE](../LICENSE). Distributed without warranty. Version 0.4.1 adds the license and notice to both store-upload packages; earlier GitHub release assets are unchanged.

@@ -51,3 +51,7 @@ Attachments are processed locally, without analytics, advertising, or transmissi
 GDAD depends on attachment links exposed by Gmail. It cannot export Google Drive links or files that are still uploading. ZIPs are built in memory without compression. Changes to Gmail's interface may require extension updates.
 
 GDAD is independent and is not affiliated with Google or Mozilla. See the [submission guide](release/PUBLISHING.md) before submitting to the stores.
+
+## License
+
+Copyright (C) 2026 tupolev. GDAD source code, icons and documentation are licensed under the GNU General Public License version 3 only (`GPL-3.0-only`). See [LICENSE](LICENSE). Distributed without warranty. Version 0.4.1 adds the license and notice to both store-upload packages; earlier GitHub release assets are unchanged.

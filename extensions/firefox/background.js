@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-only
+// Copyright (C) 2026 tupolev
 const api=globalThis.browser||chrome;
 api.action.onClicked.addListener(async tab=>{
  if(!tab.url?.startsWith('https://mail.google.com/'))return;

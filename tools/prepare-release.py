@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: GPL-3.0-only
 from pathlib import Path
 import json,zipfile,hashlib
 from PIL import Image,ImageDraw
@@ -16,7 +17,7 @@ for browser in ['chrome','firefox']:
   for x,y in [(36,80),(92,80),(36,95),(92,95)]:
    cx,cy=box((x,y));r=width/2;g.ellipse((cx-r,cy-r,cx+r,cy+r),fill='#FFFFFF')
   im=im.resize((size,size),Image.Resampling.LANCZOS);im.save(d/'icons'/f'{size}.png')
- p=d/'manifest.json';m=json.loads(p.read_text());m.update(name='GDAD (Gmail Draft Attachment Downloader)',short_name='GDAD',version='0.4.0',description='__MSG_extensionDescription__')
+ p=d/'manifest.json';m=json.loads(p.read_text());m.update(name='GDAD (Gmail Draft Attachment Downloader)',short_name='GDAD',version='0.4.1',description='__MSG_extensionDescription__')
  m['icons']={str(n):f'icons/{n}.png' for n in [16,32,48,64,96,128]};m['action']['default_title']='GDAD · Descargar adjuntos del borrador';m['action']['default_icon']={str(n):f'icons/{n}.png' for n in [16,32]};m['content_security_policy']={'extension_pages':"script-src 'self'; object-src 'none'"}
  if browser=='chrome':m['minimum_chrome_version']='109'
  else:m['browser_specific_settings']['gecko'].update(id='gdad@extensions.local',strict_min_version='140.0',data_collection_permissions={'required':['none']})

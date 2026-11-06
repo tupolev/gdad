@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: GPL-3.0-only
 """Build store-upload ZIPs with manifest at archive root. Run from repository root."""
 from pathlib import Path
 import hashlib,json,subprocess,zipfile

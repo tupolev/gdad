@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: GPL-3.0-only
 import assert from 'node:assert/strict';
 import vm from 'node:vm';
 import {readFileSync} from 'node:fs';

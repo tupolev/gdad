@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: GPL-3.0-only
 from pathlib import Path
 import json
 rows=[
@@ -26,7 +27,9 @@ rows=[
 ('prepared','ZIP preparado, pero la descarga no se inició: {error} Pulsa el enlace para guardarlo.','ZIP prepared, but download did not start: {error} Click the link to save it.','ZIP erstellt, aber Download nicht gestartet: {error} Klicke auf den Link zum Speichern.'),
 ]
 messages={lang:{r[0]:r[i+1] for r in rows} for i,lang in enumerate(['es','en','de'])}
-script='''(()=>{
+script='''// SPDX-License-Identifier: GPL-3.0-only
+// Copyright (C) 2026 tupolev
+(()=>{
 const messages=MESSAGES;
 function detectLanguage(){
  // Gmail's document language describes the current interface, unlike browser locale.

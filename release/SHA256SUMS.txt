@@ -1,2 +1,2 @@
-6fc2c79f67069f8cefecb569f54336f5499a7c3ebfea71564ccf8aa1d4643fe3  gdad-chrome-0.4.0.zip
-a5f0f62e3d05a1afd6c6fc5eaf730993da134faf0ca0605a6dfb022452035be1  gdad-firefox-0.4.0.zip
+9a9c05d4eacc9c029b7ccdabdb6551125ed4fe0df39d7435ec60ac0a8da27146  gdad-chrome-0.4.1.zip
+02100bd2202cae1f7adbfe619a36cf42188178bd5065beaa60194f0a146eddcb  gdad-firefox-0.4.1.zip
