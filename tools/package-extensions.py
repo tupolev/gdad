@@ -6,7 +6,7 @@ checks=[]
 for browser in ['chrome','firefox']:
  root=Path('extensions')/browser
  manifest=json.loads((root/'manifest.json').read_text(encoding='utf-8'))
- for file in ['background.js','content.js']:
+ for file in ['background.js','i18n.js','content.js']:
   subprocess.run(['node','--check',str(root/file)],check=True)
  for icon in manifest['icons'].values():assert (root/icon).is_file()
  name=f"gdad-{browser}-{manifest['version']}.zip"

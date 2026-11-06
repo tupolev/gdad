@@ -1,15 +1,15 @@
 {
   "manifest_version": 3,
   "name": "GDAD (Gmail Draft Attachment Downloader)",
-  "version": "0.3.3",
-  "description": "Descarga en ZIP los adjuntos disponibles de un borrador abierto en Gmail, directamente desde su editor.",
+  "version": "0.4.0",
+  "description": "__MSG_extensionDescription__",
   "permissions": [
     "activeTab",
     "scripting",
     "downloads"
   ],
   "action": {
-    "default_title": "GDAD · Descargar adjuntos del borrador",
+    "default_title": "__MSG_actionTitle__",
     "default_icon": {
       "16": "icons/16.png",
       "32": "icons/32.png"
@@ -24,6 +24,7 @@
         "https://mail.google.com/*"
       ],
       "js": [
+        "i18n.js",
         "content.js"
       ],
       "run_at": "document_idle"
@@ -41,5 +42,6 @@
   "content_security_policy": {
     "extension_pages": "script-src 'self'; object-src 'none'"
   },
-  "minimum_chrome_version": "109"
+  "minimum_chrome_version": "109",
+  "default_locale": "en"
 }

@@ -1,0 +1,8 @@
+{
+  "extensionDescription": {
+    "message": "Descarga en ZIP los adjuntos disponibles de un borrador abierto en Gmail, directamente desde su editor."
+  },
+  "actionTitle": {
+    "message": "GDAD · Descargar adjuntos de este borrador"
+  }
+}

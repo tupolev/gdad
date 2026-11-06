@@ -1,0 +1,8 @@
+{
+  "extensionDescription": {
+    "message": "Download available attachments from an open Gmail draft as a ZIP, directly from its editor."
+  },
+  "actionTitle": {
+    "message": "GDAD · Download attachments from this draft"
+  }
+}

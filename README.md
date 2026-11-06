@@ -36,3 +36,6 @@ Procesamiento local; sin analítica, publicidad ni envío de adjuntos al desarro
 Depende de los enlaces que Gmail exponga en su interfaz. No descarga enlaces de Drive ni archivos que aún estén subiendo. Los ZIP se crean en memoria sin compresión. Gmail puede cambiar su interfaz y requerir ajustes en la extensión.
 
 Proyecto independiente, sin afiliación con Google o Mozilla. Consulta [las instrucciones de publicación](release/PUBLISHING.md) antes de enviar los paquetes a las tiendas.
+
+## Languages
+GDAD 0.4.0 supports English, Spanish and German. The panel follows Gmail's current interface language (English fallback for other languages). Browser extension metadata follows the browser language. Reopen the ZIP panel after changing Gmail's language. Run `node tools/test-i18n.mjs` to check language detection and translations. Current packages: Chrome and Firefox 0.4.0.

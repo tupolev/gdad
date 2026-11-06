@@ -29,3 +29,8 @@ Al detectar los adjuntos, los nombres repetidos reciben un sufijo numérico ante
 
 ## Firefox 0.3.4
 Se envía el Blob del ZIP al proceso de fondo de Firefox y allí se crea su URL temporal. Firefox deniega downloads.download con una URL blob creada en Gmail (Mozilla bug 1696174). Se libera la URL de la extensión al terminar o interrumpirse la descarga, o si falla su inicio. El enlace manual de reintento se conserva. Verificación simulada: node tools/test-firefox-download.mjs. Pendiente de comprobar la descarga real en Firefox/Gmail.
+
+## Idiomas (0.4.0)
+La interfaz del panel, avisos y ayudas está disponible en inglés, español y alemán. Se detecta el atributo lang de la página de Gmail en cada apertura y al generar mensajes; si falta, se consultan etiquetas de los controles de Gmail. Para otros idiomas se utiliza inglés. El idioma del navegador no sustituye al de Gmail. Los textos de la ficha y del icono del navegador usan el sistema _locales del navegador. Los nombres originales de los archivos se conservan.
+Prueba: cambia el idioma de visualización en la configuración de Gmail, vuelve al borrador y abre el panel ZIP. Si cambias de idioma con el panel abierto, ciérralo y vuelve a abrirlo. No es necesario reinstalar la extensión.
+Verificación: node tools/test-i18n.mjs. Los mensajes de error técnicos devueltos por Gmail o por el navegador conservan su texto original.

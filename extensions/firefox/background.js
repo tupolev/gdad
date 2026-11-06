@@ -1,7 +1,7 @@
 const api=globalThis.browser||chrome;
 api.action.onClicked.addListener(async tab=>{
  if(!tab.url?.startsWith('https://mail.google.com/'))return;
- try{await api.scripting.executeScript({target:{tabId:tab.id},files:['content.js']});}catch(e){console.error(e);}
+ try{await api.scripting.executeScript({target:{tabId:tab.id},files:['i18n.js','content.js']});}catch(e){console.error(e);}
 });
 
 const zipUrls=new Map();
@@ -13,7 +13,7 @@ api.runtime.onMessage.addListener((message,sender,sendResponse)=>{
  if(!sender.tab?.url?.startsWith('https://mail.google.com/'))return;
  if(message.type==='save-draft-zip'){
   if(!(message.blob instanceof Blob)||message.blob.type!=='application/zip'){
-   sendResponse({ok:false,error:'Archivo ZIP no válido.'});return;
+   sendResponse({ok:false,error:'Invalid ZIP file.'});return;
   }
   const url=URL.createObjectURL(message.blob);
   api.downloads.download({url,filename:'adjuntos-borrador.zip',saveAs:true,conflictAction:'uniquify'})
