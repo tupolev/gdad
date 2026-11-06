@@ -1,36 +1,37 @@
-# Extensiones para Chrome y Firefox
+# GDAD browser extensions
 
 ## Chrome
-Abre chrome://extensions, activa Modo de desarrollador, pulsa Cargar descomprimida y selecciona la carpeta chrome de este directorio.
+
+Open `chrome://extensions`, enable Developer mode, select Load unpacked, and choose the `chrome` directory. Reload Gmail after installation or updates.
 
 ## Firefox
-Abre about:debugging#/runtime/this-firefox, pulsa Cargar complemento temporal y selecciona firefox/manifest.json. Esta instalación dura hasta reiniciar Firefox; una instalación permanente requiere firmar el complemento con Mozilla.
 
-## Uso
-Abre Gmail, abre un único borrador, espera a que se guarde y pulsa el icono de la extensión. Pulsa Detectar adjuntos, comprueba la lista y descarga el ZIP. Para elegir dónde se guarda, activa en tu navegador la opción de preguntar dónde guardar cada descarga. No necesitas servidor, OAuth ni claves.
+Open `about:debugging#/runtime/this-firefox`, select Load Temporary Add-on, and choose `firefox/manifest.json`. Firefox 140 or newer is required. This installation lasts until Firefox closes; permanent installation requires Mozilla signing.
 
-## Estado y límites
-Prototipo sin verificar en una sesión real de Gmail. Depende de que Gmail publique enlaces de descarga de los adjuntos en el borrador. Algunas versiones de su interfaz no los exponen: en ese caso muestra un aviso y NO puede recuperar los adjuntos. No debe considerarse compatible con todos los borradores hasta probarlo con tu cuenta. No utiliza endpoints internos no documentados ni extrae credenciales.
+## Using GDAD
 
-Solo se inspecciona el borrador abierto al pulsar Detectar. No descarga enlaces de Drive, ni archivos que aún estén subiendo. El ZIP es sin compresión y se construye en memoria. Se requiere espacio de memoria suficiente. La descarga solo comienza cuando todos los archivos seleccionados se han recuperado. Los borradores no se envían ni se eliminan.
+Open a saved Gmail draft, wait for attachments to finish uploading, and click **ZIP** in its editor. If the toolbar cannot be located, the button appears beside the editor. Each button targets its own draft. Review the attachment list, select files, and download the ZIP. A manual retry link remains available if automatic saving fails. No search text, server, or OAuth credentials are required.
 
-Permisos: activeTab y scripting permiten leer la pestaña seleccionada al pulsar el icono. No se envían datos a servicios externos ni se incluyen bibliotecas remotas.
+Repeated filenames are renamed during detection, before the extension: `photo.webp`, `photo (1).webp`, `photo (2).webp`. Comparison ignores case to avoid conflicts on Windows. Gmail's trailing display size, such as `(144 K)`, is removed from display-derived filenames; explicit original filename metadata takes precedence.
 
-## Versión 0.2
-Las dos extensiones insertan automáticamente un botón «↧ ZIP» en la barra del borrador; si no encuentran la barra, lo colocan junto al editor. Cada botón selecciona su propio borrador, incluso con varios abiertos, y detecta los adjuntos al abrir el panel. No hay campo de búsqueda obligatorio. El icono de la extensión también sigue disponible.
+## Languages
 
-Después de actualizar, recarga la extensión y la pestaña de Gmail. Chrome pedirá acceso a mail.google.com para insertar el botón automáticamente. En Firefox vuelve a cargar el complemento temporal. La interfaz de Gmail y la descarga real siguen pendientes de verificar con una cuenta real.
+English, Spanish, and German are supported. GDAD checks Gmail's document language whenever the panel is opened and messages are generated. If the language attribute is absent, it checks Gmail's accessible controls. Unsupported or unknown languages fall back to English. Reopen an existing panel after changing Gmail's language. Technical errors returned by Gmail or the browser retain their original wording.
 
-## Versión 0.2.3
-Solo aparece el botón ZIP junto al editor o en la barra del borrador. Se ha eliminado el botón flotante. Se conserva el enlace para reintentar guardar un ZIP preparado y el seguimiento de la descarga. Recarga la extensión y Gmail para actualizar; acepta el permiso de descargas si el navegador lo solicita.
+## Permissions and privacy
 
-## Versión 0.3.2
-Al detectar los adjuntos, los nombres repetidos reciben un sufijo numérico antes de la extensión: foto.webp, foto (1).webp, foto (2).webp. La comparación ignora mayúsculas para evitar conflictos en Windows. Los nombres mostrados en la lista son los que se guardan en el ZIP; también se evitan colisiones con nombres que ya contienen números. Verificación: node tools/test-filenames.mjs y node tools/test-duplicate-filenames.mjs.
+- Gmail content script access inserts the ZIP button and reads attachment links from the selected draft.
+- `activeTab` and `scripting` allow opening the panel through the browser toolbar icon.
+- `downloads` starts saving and checks the state of downloads initiated by GDAD.
 
-## Firefox 0.3.4
-Se envía el Blob del ZIP al proceso de fondo de Firefox y allí se crea su URL temporal. Firefox deniega downloads.download con una URL blob creada en Gmail (Mozilla bug 1696174). Se libera la URL de la extensión al terminar o interrumpirse la descarga, o si falla su inicio. El enlace manual de reintento se conserva. Verificación simulada: node tools/test-firefox-download.mjs. Pendiente de comprobar la descarga real en Firefox/Gmail.
+Files are processed in browser memory. There are no external libraries, analytics, or developer-side uploads. See [the privacy policy](../release/PRIVACY.md).
 
-## Idiomas (0.4.0)
-La interfaz del panel, avisos y ayudas está disponible en inglés, español y alemán. Se detecta el atributo lang de la página de Gmail en cada apertura y al generar mensajes; si falta, se consultan etiquetas de los controles de Gmail. Para otros idiomas se utiliza inglés. El idioma del navegador no sustituye al de Gmail. Los textos de la ficha y del icono del navegador usan el sistema _locales del navegador. Los nombres originales de los archivos se conservan.
-Prueba: cambia el idioma de visualización en la configuración de Gmail, vuelve al borrador y abre el panel ZIP. Si cambias de idioma con el panel abierto, ciérralo y vuelve a abrirlo. No es necesario reinstalar la extensión.
-Verificación: node tools/test-i18n.mjs. Los mensajes de error técnicos devueltos por Gmail o por el navegador conservan su texto original.
+## Limits and verification
+
+Only attachments with download links exposed by Gmail are supported. Drive links and uploads in progress are not downloaded. If links are unavailable, the panel displays an explanation. ZIPs are uncompressed and require sufficient memory. Drafts are never sent or deleted.
+
+Firefox creates its download URL in the extension background context because Firefox rejects Gmail-owned Blob URLs in the downloads API. Prepared files remain available through the manual retry link.
+
+Filename handling, duplicate naming, language detection, and the Firefox download flow have automated regression checks in `tools`. These checks do not replace testing against Gmail's live interface. The user has confirmed successful Firefox downloading; full visual testing in all languages remains pending.
+
+Current version: **0.4.0** for both browsers. See [submission guidance](../release/PUBLISHING.md).
